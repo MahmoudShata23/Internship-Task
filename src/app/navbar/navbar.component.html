@@ -1,0 +1,112 @@
+<nav class="nav-color navbar navbar-expand-md border-bottom pb-0 ">
+  <div class="container-fluid pb-0">
+    <div class="col-md-2 fs-3">
+      <div class="row">
+        <div class="col-md-6 brand-div mb-1">
+          DOT<span class="brand-span">CARE</span>
+        </div>
+        <mark class="brand-lorem border-start col-md-3 p-0 pb-1 ps-1 ms-3"
+          >Lorem ipsum vero excepturi.</mark
+        >
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <form action="">
+        <div class="div-search p-inputgroup">
+          <input
+            type="search"
+            class="search-input rounded-start p-1"
+            placeholder="search for patients (Name, code, Phone Number) "
+            aria-label="Search"
+          />
+          <button class="search-button p-inputgroup-addon">
+            <i class="pi pi-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      aria-controls="navbarContent"
+      [attr.aria-expanded]="!collapsed"
+      aria-label="Toggle navigation"
+      (click)="collapsed = !collapsed"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="navbar-collapse col-md-6"
+      [class.collapse]="collapsed"
+      id="navbarContent"
+    >
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item" ngbDropdown>
+          <a
+            class="nav-link"
+            tabindex="0"
+            ngbDropdownToggle
+            id="navbarDropdown1"
+            role="button"
+          >
+            English
+          </a>
+          <div
+            ngbDropdownMenu
+            aria-labelledby="navbarDropdown1"
+            class="dropdown-menu"
+          >
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()"
+              >Arabic</a
+            >
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()"
+              >France</a
+            >
+          </div>
+        </li>
+        <li
+          class="nav-item"
+          ngbDropdown
+          display="dynamic"
+          placement="bottom-end"
+        >
+          <div class="d-flex align-items-center">
+            <div class="flex-shrink-0 dropdown border-start ps-2">
+              <div
+                ngbDropdownMenu
+                aria-labelledby="navbarDropdown2"
+                class="dropdown-menu dropdown-menu-end"
+              >
+                <a ngbDropdownItem href="#" (click)="$event.preventDefault()"
+                  >Action</a
+                >
+                <a ngbDropdownItem href="#" (click)="$event.preventDefault()"
+                  >Another action</a
+                >
+                <a ngbDropdownItem href="#" (click)="$event.preventDefault()"
+                  >Something else here</a
+                >
+              </div>
+              <a
+                href="#"
+                class="anchor-profile d-block link-blue text-decoration-none pb-1"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://github.com/mdo.png"
+                  alt="mdo"
+                  width="35"
+                  height="35"
+                  class="rounded-circle"
+                />
+                this is your profile
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

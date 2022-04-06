@@ -1,0 +1,57 @@
+section {
+  background-color: #d9ecff;
+  padding-top: 1rem;
+}
+.header-container {
+  background-color: #0357a8;
+  color: #ffffff;
+  width: 97%;
+  z-index: 111111111;
+  position: absolute;
+  top: 3.4rem;
+  left: 1.4rem;
+}
+:host ::ng-deep .p-breadcrumb {
+  border: none !important;
+  outline: none;
+  box-shadow: none;
+  font-size: 0.8rem;
+  background-color: #0357a8;
+  padding: 0;
+}
+
+:host ::ng-deep .pi-chevron-right::before {
+  font-size: 1rem;
+}
+:host ::ng-deep .p-menuitem-text {
+  color: #ffffff !important;
+  transition: all 0.3s ease;
+}
+:host ::ng-deep .p-menuitem-text:hover {
+  color: #8fb2ff !important;
+}
+:host ::ng-deep .p-sidebar-top {
+  top: 6rem;
+  left: 1.4rem;
+  width: 97%;
+  height: 6rem;
+  border-radius: 0.5rem;
+  background-color: #ecfbff;
+}
+:host ::ng-deep .p-sidebar-header {
+  display: none;
+}
+:host ::ng-deep .p-sidebar-content {
+  height: auto;
+  overflow-y: hidden;
+}
+.product-link {
+  width: 5rem;
+}
+.arrow-right {
+  font-size: 1.1rem;
+  font-weight: 100;
+}
+.home-size {
+  font-size: 1.3rem;
+}

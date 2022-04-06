@@ -1,0 +1,48 @@
+.nav-color {
+  background-color: #ffffff;
+}
+.anchor-profile {
+  font-size: 0.9rem;
+}
+.brand-div {
+  color: #00ffff;
+  font-weight: 500;
+}
+.brand-span {
+  color: #0026ff;
+}
+.brand-lorem {
+  lighting-color: #69b2d4;
+  font-size: 0.5rem;
+  line-height: 0.5rem;
+  height: 1.6rem;
+  width: 2.9rem;
+}
+.div-search {
+  height: 1.8rem;
+}
+.search-input {
+  width: 95%;
+  background-color: #e8f0f7;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.search-input::placeholder {
+  font-size: 0.7rem;
+  padding-left: 0.3rem;
+}
+.search-button {
+  border: none;
+  border-left: 0.1rem solid #69b2d4;
+  border-radius: 1px 0 0 1px;
+  background-color: #e8f0f7;
+  width: 5%;
+}
+.search-button {
+  border: none;
+  border-left: 0.1rem solid #69b2d4;
+  border-radius: 1px 0 0 1px;
+  background-color: #e8f0f7;
+  width: 5%;
+}
