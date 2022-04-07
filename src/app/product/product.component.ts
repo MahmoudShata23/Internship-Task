@@ -1,29 +1,56 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectItem, PrimeNGConfig } from 'primeng/api';
+import { Customer } from '../model/customer';
+import { CustomerService } from '../service/customer.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
+  providers: [],
 })
 export class ProductComponent implements OnInit {
-  countries: any;
-  cities: City[] = [];
-  value8: any;
+  warehouse: Warehouse[] = [];
+  type: Type[] = [];
   value7: any;
-  selectedCity1: any;
+  selectedValue: any;
+  selectedValues: string[] = [];
+  selectedCities2: any;
+  cities: any;
+  items: any;
+  loading = [false, false, false, false];
 
-  selectedCity2: any;
+  constructor(private primengConfig: PrimeNGConfig) {
+    this.items = [];
 
-  constructor() {}
-
-  ngOnInit(): void {
     this.cities = [
-      { name: 'ahmed', code: '12' },
-      { name: 'ahmed', code: '12' },
+      { name: 'product-1' },
+      { name: 'product-2' },
+      { name: 'product-3' },
+      { name: 'product-4' },
     ];
   }
+
+  load(index: any) {
+    this.loading[index] = true;
+    setTimeout(() => (this.loading[index] = false), 1000);
+  }
+
+  ngOnInit(): void {
+    this.primengConfig.ripple = true;
+    this.warehouse = [{ name: 'Warehouse-1' }, { name: 'Warehouse-2' }];
+    console.log(this.value7);
+    if (!this.value7) {
+    } else if (this.value7 == 'Warehouse-1') {
+      this.type = [{ name: 'Type-A' }, { name: 'Type-B' }];
+    } else if (this.value7 == 'Warehouse-2') {
+      this.type = [{ name: 'Type-C' }, { name: 'Type-D' }];
+    }
+  }
 }
-interface City {
+interface Warehouse {
   name: string;
-  code: string;
+}
+interface Type {
+  name: string;
 }

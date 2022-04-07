@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <app-header></app-header>
-<section class="pb-5 pb-5">
+<section class="pb-5">
   <h2 class="product-title pt-1">Product</h2>
-  <div class="con-product_inf container-fluid ps-5">
+  <div class="con-product_inf container-fluid ps-5 pe-5">
     <div class="row pt-3">
       <div class="d-flex align-items-center">
         <img
@@ -13,33 +13,111 @@
         <strong class="heads-color">Basic Information</strong>
       </div>
     </div>
+
     <hr />
     <div class="row">
-      <div class="col-4">
-        <p-cascadeSelect
-          [(ngModel)]="selectedCity1"
-          [options]="countries"
-          optionLabel="cname"
-          optionGroupLabel="name"
-          [optionGroupChildren]="['states']"
-          [style]="{ minWidth: '20rem' }"
-          placeholder="Select a City"
-        ></p-cascadeSelect>
+      <div class="field col-4 md:col-4">
+        <label for="Warehouse" class="color-text d-block pb-2"
+          >Warehouse <span style="color: 'red'">*</span></label
+        >
+        <p-dropdown
+          inputId="Warehouse"
+          [autoDisplayFirst]="false"
+          [options]="warehouse"
+          [(ngModel)]="value7"
+          [style]="{ minWidth: '23rem' }"
+          optionLabel="name"
+          placeholder="Warehouse"
+        >
+        </p-dropdown>
       </div>
       <div class="field col-4 md:col-4">
+        <label for="type" class="color-text d-block pb-2"
+          >Type <span style="color: 'red'">*</span></label
+        >
         <p-dropdown
-          inputId="dropdown"
+          inputId="type"
           [autoDisplayFirst]="false"
-          [options]="cities"
+          [options]="type"
           [(ngModel)]="value7"
-          [style]="{ minWidth: '20rem' }"
+          [style]="{ minWidth: '23rem' }"
           optionLabel="name"
-          placeholder="Dropdown"
-        ></p-dropdown>
+          placeholder="Type"
+        >
+        </p-dropdown>
       </div>
+      <div class="field col-4 md:col-4 d-flex align-items-end pb-2">
+        <p-checkbox
+          name="groupname"
+          value="val1"
+          [(ngModel)]="selectedValues"
+        ></p-checkbox>
+        <span class="ps-2">Show Zero Balance</span>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-start align-items-center mt-4">
+      <div class="col-4 md:col-4 d-flex flex-column">
+        <div class="row mb-2">
+          <strong class="heads-color">Product Classification</strong>
+        </div>
+        <div class="d-flex">
+          <div class="first-radio">
+            <p-radioButton
+              name="groupname"
+              value="val1"
+              [(ngModel)]="selectedValue"
+              inputId="all-product"
+            ></p-radioButton>
+            <label for="all-product" class="ps-1">All Product</label>
+          </div>
+          <div class="second-radio">
+            <p-radioButton
+              name="groupname"
+              value="val2"
+              [(ngModel)]="selectedValue"
+              inputId="Specific-Product"
+            ></p-radioButton>
+            <label for="Specific-Product" class="ps-1">Specific Product </label>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 md:col-4">
+        <label for="type" class="color-text d-block pb-2"
+          >Product <span style="color: 'red'">*</span></label
+        >
+        <p-multiSelect
+          [options]="cities"
+          [(ngModel)]="selectedCities2"
+          defaultLabel="Select a City"
+          optionLabel="name"
+          display="chip"
+          [style]="{ minWidth: '30rem' }"
+        ></p-multiSelect>
+      </div>
+    </div>
+    <div class="mt-5 me-5 d-flex align-items-center justify-content-end">
+      <p-button
+        label="Search"
+        [loading]="loading[3]"
+        (onClick)="load(3)"
+      ></p-button>
+    </div>
+    <div class="">
+      <div class="row pt-3">
+        <div class="d-flex align-items-center">
+          <img
+            src="../../assets/images/icons8-document-24.png"
+            alt="Document"
+            class="img-svg pe-2"
+          />
+          <strong class="heads-color">Products Details</strong>
+        </div>
+      </div>
+      <hr />
     </div>
   </div>
 </section>
+
 <app-footer></app-footer>
 <!-- <p-multiSelect
 inputId="multiselect"
