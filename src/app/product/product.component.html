@@ -1,12 +1,52 @@
 <app-navbar></app-navbar>
 <app-header></app-header>
-<section>
+<section class="pb-5 pb-5">
   <h2 class="product-title pt-1">Product</h2>
-  <div class="con-product_inf container-fluid">
-    <div class="row">
-      <h3></h3>
+  <div class="con-product_inf container-fluid ps-5">
+    <div class="row pt-3">
+      <div class="d-flex align-items-center">
+        <img
+          src="../../assets/images/icons8-block-chain-24.png"
+          alt="Document"
+          class="img-svg pe-2"
+        />
+        <strong class="heads-color">Basic Information</strong>
+      </div>
     </div>
-    <mat-icon>description</mat-icon>
+    <hr />
+    <div class="row">
+      <div class="col-4">
+        <p-cascadeSelect
+          [(ngModel)]="selectedCity1"
+          [options]="countries"
+          optionLabel="cname"
+          optionGroupLabel="name"
+          [optionGroupChildren]="['states']"
+          [style]="{ minWidth: '20rem' }"
+          placeholder="Select a City"
+        ></p-cascadeSelect>
+      </div>
+      <div class="field col-4 md:col-4">
+        <p-dropdown
+          inputId="dropdown"
+          [autoDisplayFirst]="false"
+          [options]="cities"
+          [(ngModel)]="value7"
+          [style]="{ minWidth: '20rem' }"
+          optionLabel="name"
+          placeholder="Dropdown"
+        ></p-dropdown>
+      </div>
+    </div>
   </div>
 </section>
 <app-footer></app-footer>
+<!-- <p-multiSelect
+inputId="multiselect"
+[options]="cities"
+[(ngModel)]="value8"
+optionLabel="name"
+[filter]="false"
+class="ng-dirty"
+placeholder="MultiSelect"
+></p-multiSelect> -->

@@ -5,3 +5,23 @@
   width: 97%;
   background-color: #ffffff;
 }
+.img-svg {
+  width: 2rem;
+  height: 1.5rem;
+}
+.heads-color {
+  color: #0d3d6c;
+}
+
+:host ::ng-deep .p-cascadeselect .p-cascadeselect-label {
+  padding: 0.5rem 0.5rem;
+  background-color: #f5f7f9;
+  border-radius: 6px;
+}
+:host ::ng-deep .p-cascadeselect .p-cascadeselect-trigger {
+  background-color: #e4edf6;
+  color: #0d3d6c;
+}
+:host ::ng-deep .pi-chevron-down::before {
+  content: "\f0d7";
+}

@@ -21,7 +21,9 @@ section {
 }
 
 :host ::ng-deep .pi-chevron-right::before {
-  font-size: 1rem;
+  display: flex;
+  font-size: 0.5rem;
+  color: #ffffff !important;
 }
 :host ::ng-deep .p-menuitem-text {
   color: #ffffff !important;
