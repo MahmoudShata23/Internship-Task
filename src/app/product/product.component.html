@@ -1,9 +1,126 @@
 <app-navbar></app-navbar>
 <app-header></app-header>
-<section class="pb-5">
-  <h2 class="product-title pt-1">Product</h2>
-  <div class="con-product_inf container-fluid ps-5 pe-5">
-    <div class="row pt-3">
+<section class="pb-2">
+  <h2 class="product-title pt-1 mb-1">Product</h2>
+  <div class="con-product_inf container-fluid ps-5 pe-5 pt-3">
+    <div class="row">
+      <div class="field col-4 md:col-4">
+        <strong>
+          <label for="Warehouse" class="color-text d-block pb-2"
+            >Warehouse <span style="color: 'red'">*</span></label
+          >
+        </strong>
+        <p-dropdown
+          inputId="Warehouse"
+          [autoDisplayFirst]="false"
+          [options]="warehouse"
+          [(ngModel)]="warehouseInput"
+          [style]="{ minWidth: '23rem' }"
+          optionLabel="name"
+          placeholder="Select Warehouse"
+          (onChange)="onChange($event)"
+          [required]="true"
+        >
+        </p-dropdown>
+      </div>
+      <div class="field col-4 md:col-4">
+        <strong>
+          <label for="type" class="color-text d-block pb-2"
+            >Type <span style="color: 'red'">*</span></label
+          >
+        </strong>
+        <p-dropdown
+          inputId="type"
+          [autoDisplayFirst]="false"
+          [options]="types"
+          [(ngModel)]="typeInput"
+          [style]="{ minWidth: '23rem' }"
+          placeholder="Select UOM Type"
+          (onChange)="changeType($event)"
+          [disabled]="!disableInput"
+          [required]="true"
+        >
+        </p-dropdown>
+      </div>
+      <div class="field col-4 md:col-4 d-flex align-items-end pb-2">
+        <p-checkbox
+          name="groupname"
+          value="zeroBalance"
+          [(ngModel)]="checkboxInput"
+          [disabled]="!disableInput"
+        ></p-checkbox>
+        <span class="ps-2">Show Zero Balance</span>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-start align-items-center mt-4">
+      <div class="col-4 md:col-4 d-flex flex-column">
+        <div class="row mb-2">
+          <strong class="heads-color">Product Classification</strong>
+        </div>
+        <div class="d-flex">
+          <div class="first-radio">
+            <p-radioButton
+              name="groupname"
+              value="all-product"
+              [(ngModel)]="radioInput"
+              inputId="all-product"
+              [disabled]="!disableInput"
+              (onClick)="showProduct()"
+            ></p-radioButton>
+            <label for="all-product" class="ps-1">All Product</label>
+          </div>
+          <div class="second-radio">
+            <p-radioButton
+              name="groupname"
+              value="specific-Product"
+              [(ngModel)]="radioInput"
+              inputId="Specific-Product"
+              [disabled]="!disableInput"
+              (onClick)="showProduct()"
+            ></p-radioButton>
+            <label for="Specific-Product" class="ps-1">Specific Product </label>
+          </div>
+        </div>
+      </div>
+      <div [style]="styleProduct" class="col-6 md:col-4 flex-column">
+        <strong for="type" class="color-text d-block pb-2">
+          Product <span style="color: 'red'">*</span>
+        </strong>
+        <p-multiSelect
+          [options]="productsList"
+          [(ngModel)]="selectedProduct"
+          defaultLabel="Select a Product"
+          optionLabel=""
+          display="chip"
+          [style]="{ minWidth: '30rem' }"
+          (onChange)="disableButton()"
+        ></p-multiSelect>
+      </div>
+    </div>
+    <div class="mt-5 me-5 d-flex align-items-center justify-content-end">
+      <p-button
+        label="Submit"
+        type="Submit"
+        [loading]="loading[3]"
+        (onClick)="load(3)"
+        [disabled]="buttonDisabled"
+      ></p-button>
+    </div>
+
+    <div class="">
+      <div class="row pt-3">
+        <div class="d-flex align-items-center">
+          <img
+            src="../../assets/images/icons8-document-24.png"
+            alt="Document"
+            class="img-svg pe-2"
+          />
+          <strong class="heads-color">Products Details</strong>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <!-- <div class="row">
       <div class="d-flex align-items-center">
         <img
           src="../../assets/images/icons8-block-chain-24.png"
@@ -13,8 +130,112 @@
         <strong class="heads-color">Basic Information</strong>
       </div>
     </div>
-
     <hr />
+    <div class="row mt-3">
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSub(form)"
+      >
+        <div class="row">
+          <div class="col-4 me-5">
+            <strong>
+              <label for="Warehouse" class="color-text d-block pb-2"
+                >Warehouse <span style="color: 'red'">*</span></label
+              >
+            </strong>
+            <ng-select
+              formControlName="Warehouse"
+              name="Warehouse"
+              class="custom"
+              (change)="onChange($event)"
+            >
+              <ng-option *ngFor="let item of warehouse" [value]="item.name">{{
+                item.name
+              }}</ng-option>
+            </ng-select>
+          </div>
+          <div class="col-4">
+            <strong>
+              <label for="Type" class="color-text d-block pb-2"
+                >Type <span style="color: 'red'">*</span></label
+              >
+            </strong>
+            <ng-select formControlName="Type" name="Type" class="custom">
+              <ng-option *ngFor="let car of types" [value]="car.name">{{
+                car.name
+              }}</ng-option>
+            </ng-select>
+          </div>
+          <div class="checkbox form-check col-2">
+            <input
+              formControlName="ZeroBalance"
+              class="form-check-input"
+              type="checkbox"
+              id="flexCheckChecked"
+              checked
+            />
+            <label class="form-check-label pt-1" for="flexCheckChecked">
+              Show Zero Balance
+            </label>
+          </div>
+        </div>
+        <div class="row mt-1">
+          <div class="row mt-3">
+            <strong class="heads-color">Product Classification</strong>
+          </div>
+          <div class="col-4">
+            <div class="col-6 form-check form-check-inline mt-1">
+              <input
+                formControlName="Product"
+                class="form-check-input"
+                type="radio"
+                name="Product"
+                id="all-product"
+                value="all-product"
+              />
+              <label class="form-check-label pt-1" for="all-product"
+                >All Product</label
+              >
+            </div>
+            <div class="col-4 form-check form-check-inline">
+              <input
+                formControlName="Product"
+                class="form-check-input"
+                type="radio"
+                name="Product"
+                id="Specific-Product"
+                value="Specific-Product"
+              />
+              <label class="form-check-label pt-1" for="Specific-Product"
+                >Specific Product</label
+              >
+            </div>
+          </div>
+          <div class="col-4">
+            <strong>
+              <label for="product" class="color-text d-block pb-2"
+                >Product <span style="color: 'red'">*</span></label
+              >
+            </strong>
+            <ng-select
+              formControlName="NameProduct"
+              class="custom"
+              [multiple]="true"
+              name="product"
+            >
+              <ng-option *ngFor="let car of cars" [value]="car.name">{{
+                car.name
+              }}</ng-option>
+            </ng-select>
+          </div>
+          <div class="mt-5 me-5 d-flex align-items-center justify-content-end">
+            <input type="Submit" value="Search" [class.is] />
+          </div>
+        </div>
+      </form>
+    </div> -->
+    <!-- 
+
     <div class="row">
       <div class="field col-4 md:col-4">
         <label for="Warehouse" class="color-text d-block pb-2"
@@ -28,6 +249,8 @@
           [style]="{ minWidth: '23rem' }"
           optionLabel="name"
           placeholder="Warehouse"
+          (onChange)="onChange($event)"
+          [required]="true"
         >
         </p-dropdown>
       </div>
@@ -38,11 +261,12 @@
         <p-dropdown
           inputId="type"
           [autoDisplayFirst]="false"
-          [options]="type"
+          [options]="types"
           [(ngModel)]="value7"
           [style]="{ minWidth: '23rem' }"
           optionLabel="name"
           placeholder="Type"
+          [disabled]="!disableInput"
         >
         </p-dropdown>
       </div>
@@ -51,6 +275,7 @@
           name="groupname"
           value="val1"
           [(ngModel)]="selectedValues"
+          [disabled]="!disableInput"
         ></p-checkbox>
         <span class="ps-2">Show Zero Balance</span>
       </div>
@@ -67,6 +292,7 @@
               value="val1"
               [(ngModel)]="selectedValue"
               inputId="all-product"
+              [disabled]="!disableInput"
             ></p-radioButton>
             <label for="all-product" class="ps-1">All Product</label>
           </div>
@@ -76,17 +302,18 @@
               value="val2"
               [(ngModel)]="selectedValue"
               inputId="Specific-Product"
+              [disabled]="!disableInput"
             ></p-radioButton>
             <label for="Specific-Product" class="ps-1">Specific Product </label>
           </div>
         </div>
       </div>
-      <div class="col-6 md:col-4">
+      <div [style]="styleProduct" class="col-6 md:col-4">
         <label for="type" class="color-text d-block pb-2"
           >Product <span style="color: 'red'">*</span></label
         >
         <p-multiSelect
-          [options]="cities"
+          [options]="nameProduct"
           [(ngModel)]="selectedCities2"
           defaultLabel="Select a City"
           optionLabel="name"
@@ -97,11 +324,13 @@
     </div>
     <div class="mt-5 me-5 d-flex align-items-center justify-content-end">
       <p-button
-        label="Search"
+        label="Submit"
+        type="Submit"
         [loading]="loading[3]"
         (onClick)="load(3)"
       ></p-button>
     </div>
+
     <div class="">
       <div class="row pt-3">
         <div class="d-flex align-items-center">
@@ -114,17 +343,117 @@
         </div>
       </div>
       <hr />
+    </div> -->
+    <div class="row mt-5">
+      <!-- <p-table
+        #dt
+        [columns]="cols"
+        [value]="Products"
+        [paginator]="true"
+        [rows]="10"
+        [rowsPerPageOptions]="[5, 10, 15, 20]"
+        [totalRecords]="totalRecords"
+        [pageLinks]="3"
+      >
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{ col.header }}
+            </th>
+          </tr>
+          <tr>
+            <th *ngFor="let col of columns">
+              <input
+                pInputText
+                type="text"
+                (input)="
+                  dt.filter($any($event.target).value, col.field, 'contains')
+                "
+                [value]="input"
+                size="30"
+              />
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr>
+            <td *ngFor="let col of columns">
+              {{ rowData[col.field] }}
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="4">No customers found.</td>
+          </tr>
+        </ng-template>
+      </p-table> -->
+      <p-table
+        #dt2
+        [value]="tableContent"
+        dataKey="id"
+        [rows]="10"
+        responsiveLayout="scroll"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        styleClass="p-datatable-customers"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['name', 'price', 'Type']"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Type</th>
+          </tr>
+          <tr>
+            <th>
+              <p-columnFilter type="text" field="name"></p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter type="text" field="price"></p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter type="text" field="Type"> </p-columnFilter>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-products>
+          <tr>
+            <td>
+              {{ products.name }}
+            </td>
+            <td>
+              <span class="image-text">{{ products.price }}</span>
+            </td>
+            <td>
+              <span class="image-text">{{ products.Type }}</span>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td></td>
+            <td
+              class="imag-table d-flex align-items-center justify-content-center flex-column"
+            >
+              <img
+                src="../../assets/images/icons8-folder-5002.png"
+                width="300"
+                height="240"
+                alt="image"
+              />
+              <h4>Select Warehouse and Product</h4>
+            </td>
+            <td></td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
   </div>
 </section>
 
 <app-footer></app-footer>
-<!-- <p-multiSelect
-inputId="multiselect"
-[options]="cities"
-[(ngModel)]="value8"
-optionLabel="name"
-[filter]="false"
-class="ng-dirty"
-placeholder="MultiSelect"
-></p-multiSelect> -->

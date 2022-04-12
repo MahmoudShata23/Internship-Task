@@ -8,9 +8,9 @@ import { Customer } from '../model/customer';
 export class CustomerService {
   constructor(private http: HttpClient) {}
 
-  getCustomersMedium() {
+  getCustomersLarge() {
     return this.http
-      .get<any>('/src/assets/customers-medium.json')
+      .get<any>('../../assets/customers-medium.json')
       .toPromise()
       .then((res) => <Customer[]>res.data)
       .then((data) => {

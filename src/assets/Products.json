@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "warehouse": "Warehouse-2",
+      "name": "Product1",
+      "price": 10,
+      "Type": "Type1  "
+    },
+    {
+      "warehouse": "Warehouse-2",
+      "name": "Product2",
+      "price": 15,
+      "Type": "Type2  "
+    },
+    {
+      "warehouse": "Warehouse-2",
+      "name": "Product3",
+      "price": 10,
+      "Type": "Type3  "
+    },
+    {
+      "warehouse": "Warehouse-1",
+      "name": "Product13",
+      "price": 20,
+      "Type": "Type13  "
+    },
+    {
+      "warehouse": "Warehouse-1",
+      "name": "Product15",
+      "price": 20,
+      "Type": "Type13  "
+    },
+    {
+      "warehouse": "Warehouse-1",
+      "name": "Product16",
+      "price": 0,
+      "Type": "Type13  "
+    },
+    {
+      "warehouse": "Warehouse-1",
+      "name": "Product14",
+      "price": 20,
+      "Type": "Type14  "
+    },
+    {
+      "warehouse": "Warehouse-1",
+      "name": "Product15",
+      "price": 20,
+      "Type": "Type15  "
+    }
+  ]
+}

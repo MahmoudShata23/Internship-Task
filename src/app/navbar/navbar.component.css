@@ -46,3 +46,6 @@
   background-color: #e8f0f7;
   width: 5%;
 }
+:host ::ng-deep .navbar-expand-md .navbar-nav .dropdown-menu {
+  z-index: 99999999999;
+}

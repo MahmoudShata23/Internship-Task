@@ -23,7 +23,8 @@
   color: #0d3d6c;
 }
 .color-text {
-  color: #120064;
+  color: #173d8ab9;
+  font-size: 0.8rem;
 }
 .first-radio {
   margin-right: 7rem;
@@ -56,4 +57,64 @@
   background-color: #48dbdf;
   border: none;
   border-radius: 3px;
+}
+:host ::ng-deep .p-inputtext {
+  padding: 0.4rem 1rem;
+}
+:host ::ng-deep .p-paginator .p-dropdown {
+  height: 2rem;
+}
+:host ::ng-deep .p-datatable table {
+  border: 1px solid #dee2e6;
+  border-top: none;
+}
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+  padding: 0.5rem 1rem;
+}
+:host ::ng-deep .p-datatable .p-datatable-header {
+  border: none;
+  background-color: #e5eff8;
+}
+:host ::ng-deep th.p-datatable .p-paginator-bottom {
+  border: none;
+  background-color: #e5eff8;
+}
+:host ::ng-deep p-datatable-thead {
+  border: none;
+  background-color: #d7e4f1;
+}
+.checkbox {
+  margin: 2.4rem auto;
+  margin-bottom: 0;
+}
+.form-select {
+  width: 75%;
+}
+
+.ng-select.custom ::ng-deep .ng-arrow-wrapper {
+  background-color: #e4edf6;
+  height: 100% !important;
+  width: 14%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:host ::ng-deep .ng-select .ng-select-container {
+  width: 75%;
+  border: none;
+  padding: 0;
+  background-color: #f5f7f9;
+}
+:host
+  ::ng-deep
+  .ng-select
+  .ng-select-container
+  .ng-value-container
+  .ng-input
+  > input {
+  height: 100%;
+}
+:host ::ng-deep .p-dropdown .p-dropdown-panel {
+  z-index: 99999999999 !important;
 }

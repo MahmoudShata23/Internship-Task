@@ -12,7 +12,6 @@ export class HeaderComponent implements OnInit {
   constructor(public _Router: Router) {}
 
   ngOnInit(): void {
-    console.log(this._Router.url);
     if (this._Router.url == '/product') {
       this.items = [
         {

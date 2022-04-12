@@ -1,0 +1,50 @@
+<p-table
+  #dt2
+  [value]="products"
+  dataKey="id"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10, 25, 50]"
+  [loading]="loading"
+  styleClass="p-datatable-customers"
+  [paginator]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [globalFilterFields]="['name', 'price', 'Type']"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Type</th>
+    </tr>
+    <tr>
+      <th>
+        <p-columnFilter type="text" field="name"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="price"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="Type"> </p-columnFilter>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-products>
+    <tr>
+      <td>
+        {{ products.name }}
+      </td>
+      <td>
+        <span class="image-text">{{ products.price }}</span>
+      </td>
+      <td>
+        <span class="image-text">{{ products.Type }}</span>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="5">No customers found.</td>
+    </tr>
+  </ng-template>
+</p-table>

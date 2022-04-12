@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgSelect2Module } from 'ng-select2';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -45,8 +47,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CustomerService } from './service/customer.service';
-
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
   declarations: [
@@ -93,6 +93,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     InputTextModule,
     ProgressBarModule,
     MatPaginatorModule,
+    NgSelectModule,
+    NgSelect2Module,
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent],
