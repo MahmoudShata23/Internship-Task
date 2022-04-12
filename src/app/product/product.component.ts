@@ -24,36 +24,22 @@ export class ProductComponent implements OnInit, DoCheck {
   selectedProduct: any;
   types: any[] = [];
   productsList: any[] = [];
-  warehouseArr: any[] = [];
-  items: any;
   loading = [false, false, false, false];
   Products: Product[] = [];
-  input = 'product1';
   cols: any[] = [];
   disableInput = false;
   styleProduct = { display: 'none' };
   totalRecords: number = 0;
-  nameProduct: Arr[] = [];
   searchArr: any;
   tableContent: any;
   filteredWarehouse: any;
   filteredType: any;
   buttonDisabled = true;
 
-  // loading: boolean = true;
-
-  form: FormGroup = new FormGroup({
-    Warehouse: new FormControl('', Validators.required),
-    Type: new FormControl(''),
-
-    Product: new FormControl({ value: '', disabled: this.disableInput }),
-    NameProduct: new FormControl({ value: '', disabled: this.disableInput }),
-  });
   constructor(
     private primengConfig: PrimeNGConfig,
     private ProductService: ProductService
   ) {
-    this.items = [];
     this.warehouse = [{ name: 'Warehouse-1' }, { name: 'Warehouse-2' }];
     this.ProductService.getProducts().subscribe({
       next: (res: any) => {
@@ -61,8 +47,6 @@ export class ProductComponent implements OnInit, DoCheck {
 
         this.Products.forEach((index) => {
           this.type.push(index.Type);
-
-          this.warehouseArr.push(index.warehouse);
         });
       },
       error: (err: any) => {},
@@ -76,14 +60,8 @@ export class ProductComponent implements OnInit, DoCheck {
       }
     }
   }
-  // ngOnChanges(changes: Search[]) {
-  //   console.log(changes);
-  // }
-  ngOnInit(): void {
-    // for (const name of this.form) {
-    //   console.log(name);
-    // }
 
+  ngOnInit(): void {
     this.cols = [
       { field: 'name', header: 'Product' },
       { field: 'price', header: 'Price' },
@@ -94,13 +72,7 @@ export class ProductComponent implements OnInit, DoCheck {
 
     this.primengConfig.ripple = true;
   }
-  // onSub(data: any) {
-  //   console.log(data.value);
-  //   console.log(data.valid);
-  // }
-  // onSubmit(form: any) {
-  //   console.log(form.value);
-  // }
+ 
   onChange(event: any) {
     if (!event.value.name) {
     } else if (event.value.name) {
