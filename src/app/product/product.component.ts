@@ -72,7 +72,7 @@ export class ProductComponent implements OnInit, DoCheck {
 
     this.primengConfig.ripple = true;
   }
- 
+
   onChange(event: any) {
     if (!event.value.name) {
     } else if (event.value.name) {
